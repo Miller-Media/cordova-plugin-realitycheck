@@ -4,8 +4,7 @@
     id="cordova-plugin-realitycheck" 
     version="0.1.0">
     <name>Reality Check App</name>
-    <description>Mobile app cordova plugin</description>
-    <keywords></keywords>
+    <description>Cordova plugin for mobile app support</description>
     <repo>https://github.com/Miller-Media/cordova-plugin-realitycheck.git</repo>
 
     <js-module src="www/plugin.js" name="RCPlugin">
@@ -13,6 +12,9 @@
     </js-module>
 
     <platform name="ios">
+        <hook type="after_platform_add" src="hooks/iosrtc-swift-support.js" />
+        <hook type="after_plugin_install" src="hooks/iosAddBridgingHeader.js" />
+
         <config-file target="config.xml" parent="/*">
             <feature name="RCPlugin">
                 <param name="ios-package" value="RCPlugin" />
