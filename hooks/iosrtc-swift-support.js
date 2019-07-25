@@ -18,7 +18,6 @@ var
 	RUNPATH_SEARCH_PATHS_XCODE = '"' + RUNPATH_SEARCH_PATHS + '"',
 	ENABLE_BITCODE = 'NO',
 	ENABLE_BITCODE_XCODE = '"' + ENABLE_BITCODE + '"',
-	BRIDGING_HEADER_END = '/Plugins/cordova-plugin-iosrtc/cordova-plugin-iosrtc-Bridging-Header.h',
 	COMMENT_KEY = /_comment$/;
 
 
@@ -59,8 +58,6 @@ module.exports = function (context) {
 		xcconfigPath = path.join(projectRoot, '/platforms/ios/cordova/build.xcconfig'),
 		xcodeProjectName = projectName + '.xcodeproj',
 		xcodeProjectPath = path.join(projectRoot, 'platforms', 'ios', xcodeProjectName, 'project.pbxproj'),
-		swiftBridgingHead = projectName + BRIDGING_HEADER_END,
-		swiftBridgingHeadXcode = '"' + swiftBridgingHead + '"',
 		swiftOptions = [''], // <-- begin to file appending AFTER initial newline
 		xcodeProject;
 
@@ -85,7 +82,6 @@ module.exports = function (context) {
 	debug('fixing issues in the generated project files:');
 	debug('- "iOS Deployment Target" and "Deployment Target" to: ' + BUILD_VERSION_XCODE);
 	debug('- "Runpath Search Paths" to: ' + RUNPATH_SEARCH_PATHS_XCODE);
-	debug('- "Objective-C Bridging Header" to: ' + swiftBridgingHeadXcode);
 	debug('- "ENABLE_BITCODE" set to: ' + ENABLE_BITCODE_XCODE);
 	debug('- "SWIFT_VERSION" set to: ' + SWIFT_VERSION_XCODE);
 
@@ -94,7 +90,6 @@ module.exports = function (context) {
 
 	// "build.xcconfig"
 	swiftOptions.push('LD_RUNPATH_SEARCH_PATHS = ' + RUNPATH_SEARCH_PATHS);
-	swiftOptions.push('SWIFT_OBJC_BRIDGING_HEADER = ' + swiftBridgingHead);
 	swiftOptions.push('IPHONEOS_DEPLOYMENT_TARGET = ' + BUILD_VERSION);
 	swiftOptions.push('ENABLE_BITCODE = ' + ENABLE_BITCODE);
 	swiftOptions.push('SWIFT_VERSION = ' + SWIFT_VERSION);
@@ -120,7 +115,6 @@ module.exports = function (context) {
 		Object.keys(configurations).forEach(function (config) {
 			buildSettings = configurations[config].buildSettings;
 			buildSettings.LD_RUNPATH_SEARCH_PATHS = RUNPATH_SEARCH_PATHS_XCODE;
-			buildSettings.SWIFT_OBJC_BRIDGING_HEADER = swiftBridgingHeadXcode;
 			buildSettings.IPHONEOS_DEPLOYMENT_TARGET = BUILD_VERSION_XCODE;
 			buildSettings.ENABLE_BITCODE = ENABLE_BITCODE_XCODE;
 			buildSettings.SWIFT_VERSION = SWIFT_VERSION_XCODE;
