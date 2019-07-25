@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-        id="com.realitycheckfit.app.cordova" version="0.1.0">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="cordova-plugin-realitycheck" 
+    version="0.1.0">
     <name>Reality Check App</name>
     <description>Mobile app cordova plugin</description>
     <keywords></keywords>

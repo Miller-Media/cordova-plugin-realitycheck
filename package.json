@@ -1,0 +1,20 @@
+{
+  "author": {
+    "name": "Miller Media"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Miller-Media/cordova-plugin-realitycheck"
+  },
+  "name": "cordova-plugin-realitycheck",
+  "version": "0.1.0",
+  "description": "Cordova plugin for mobile app support",
+  "cordova": {
+    "id": "cordova-plugin-realitycheck",
+    "platforms": [
+      "ios",
+      "android",
+    ]
+  }
+}
