@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        id="com.realitycheckfit.app.cordova" version="0.1.0">
+    <name>Reality Check App</name>
+    <description>Mobile app cordova plugin</description>
+    <keywords></keywords>
+    <repo>https://github.com/Miller-Media/cordova-plugin-realitycheck.git</repo>
+
+    <js-module src="www/plugin.js" name="RCPlugin">
+        <clobbers target="cordova.plugins.realitycheck" />
+    </js-module>
+
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="RCPlugin">
+                <param name="ios-package" value="RCPlugin" />
+            </feature>
+        </config-file>
+        <header-file src="src/ios/RCPlugin.h" />
+        <source-file src="src/ios/RCPlugin.m" />
+    </platform>
+
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="RCPlugin" >
+                <param name="android-package" value="com.realitycheckfit.app.cordova.RCPlugin"/>
+            </feature>
+        </config-file>
+
+        <source-file src="src/android/RCPlugin.java" target-dir="src/com/realitycheckfit/app/cordova" />
+    </platform>
+
+</plugin>
