@@ -12,7 +12,6 @@
     </js-module>
 
     <platform name="ios">
-        <hook type="after_platform_add" src="hooks/iosrtc-swift-support.js" />
         <hook type="after_plugin_install" src="hooks/iosAddBridgingHeader.js" />
 
         <config-file target="config.xml" parent="/*">
